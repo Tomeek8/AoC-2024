@@ -5,7 +5,6 @@ with open("input.txt") as f:
 
 
 def part1(text):
-
     pattern = r"mul\((\d{1,3}),(\d{1,3})\)"
     matches = re.findall(pattern, text)
     return sum(int(nums[0]) * int(nums[1]) for nums in matches)
