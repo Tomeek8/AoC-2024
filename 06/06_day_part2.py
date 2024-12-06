@@ -51,7 +51,7 @@ def obstacle_combinations(matrix):
     matrices = []
     for r, row in enumerate(matrix):
         for c, char in enumerate(row):
-            if char == "#" or (r, c) in exclude_positions:
+            if char == "#" or (r, c) == (49,47):
                 continue
             new_matrix = [row.copy() for row in matrix]
             new_matrix[r][c] = "#"
@@ -59,33 +59,33 @@ def obstacle_combinations(matrix):
 
     return matrices
 
-
 start_time = time.time()
 
 matrix = parse("./06/input.txt")
-starting_char = starting_char(matrix)
+print(start_position("^", matrix))
+start_char = starting_char(matrix)
 r_max, c_max = len(matrix), len(matrix[0])
 
-exclude_positions = start_position(starting_char, matrix)
 loops = 0
 i_matrix = 0
 for new_matrix in obstacle_combinations(matrix):
-    print(i_matrix)
+    # print(i_matrix)
     i_matrix += 1
-    r, c = start_position(starting_char, matrix)
-    direction = start_direction(starting_char)
+    r, c = start_position(start_char, matrix)
+    direction = start_direction(start_char)
     pos_visited = set()
-    inside = True
-    while inside:
+
+    while True:
         pos_visited.add(((r, c), direction))
         if obstacle_ahead(r, c, direction, new_matrix):
             direction = turn_right(direction)
-        r, c = move(r, c, direction)
+        else:
+            r, c = move(r, c, direction)
         if r >= r_max or c >= c_max or r < 0 or c < 0:
-            inside = False
+            break
         if ((r, c), direction) in pos_visited:
             loops += 1
-            inside = False
+            break
 
 print(f"Part 2 result: {loops}")
 end_time = time.time()
