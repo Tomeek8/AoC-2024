@@ -47,4 +47,4 @@ print(f"Part 1 result: {result1}")
 print(f"Part 2 result: {result2}")
 
 print(f"Time: {time.time() - start_time:.3f} s")
-# Time: 1.957 s
+# Time: 1.627 s
