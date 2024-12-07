@@ -22,14 +22,14 @@ def is_equation_valid(test_value, numbers, part=1):
     return test_value in partial_sums
 
 
-def get_result(part=1):
+def get_result(part):
     data = parse("./07/input.txt")
     test_values_passed = []
     for test_value, numbers in data:
-        if is_equation_valid(test_value, numbers, part):
+        if is_equation_valid(test_value, numbers, part=part):
             test_values_passed.append(test_value)
     return sum(test_values_passed)
 
 
-print(f"Part 1 result: {get_result()}")
+print(f"Part 1 result: {get_result(part=1)}")
 print(f"Part 2 result: {get_result(part=2)}")
