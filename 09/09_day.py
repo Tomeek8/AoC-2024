@@ -6,7 +6,7 @@ def parse(path):
         return f.read().strip()
 
 
-def fragment_data_1(line):
+def fragment_data(line):
     fragmented = []
     for i, num in enumerate(line):
         if i % 2 == 0:
@@ -74,13 +74,13 @@ def final_sum(data):
 
 
 def part1(data):
-    fd = fragment_data_1(data)
+    fd = fragment_data(data)
     dd = defragment_1(fd)
     return final_sum(dd)
 
 
 def part2(data):
-    fd = fragment_data_1(data)
+    fd = fragment_data(data)
     dd2 = defragment_2(fd)
     return final_sum(dd2)
 
@@ -91,7 +91,3 @@ data = parse("09/input.txt")
 print(f"Part 1 result: {part1(data)}")
 print(f"Part 2 result: {part2(data)}")
 print(f"Time: {time.time() - start_time:.3f} s")
-
-# Part 1 result: 6291146824486
-# Part 2 result: 6307279963620
-# Time: 136.632 s
